@@ -402,7 +402,6 @@
 }
 
 .misc-container{
-    background-color: rgb(164, 153, 153);
     height: 120px;
     width: 85%;
     margin-top: 10px;
@@ -436,8 +435,7 @@
 }
 
 .black-buttons-yellow-button{
-    background-color: rgb(234, 189, 189);
-    height: 70%;
+    height: 60%;
     width: 30%;
     position: relative;
     margin-left: 30%;
@@ -451,4 +449,17 @@
     position: absolute;   /* Use absolute positioning */
     bottom: 0;            /* Position the child at the bottom of the parent */
     right: 0;  
+}
+
+.black-speakers-container {
+    height: 80px;
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+}
+.black-speaker{
+    background-color: black;
+    height: 60px;
+    width: 45%;
+    border-radius: 10px;
 }
