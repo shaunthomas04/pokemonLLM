@@ -455,7 +455,8 @@
     position: relative;
     margin-left: 30%;
 }
-.yellow-button{
+
+.yellow-button {
     background-color: rgb(232, 232, 96);
     height: 30px;
     width: 30px;
@@ -463,7 +464,14 @@
     border: 2px solid black;
     position: absolute;   /* Use absolute positioning */
     bottom: 0;            /* Position the child at the bottom of the parent */
-    right: 0;  
+    right: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Adds 3D effect */
+    transition: all 0.2s ease; /* Smooth transition for hover effect */
+}
+
+.yellow-button:hover {
+    transform: translateY(2px); /* Moves the button down on hover to simulate pressing */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.12); /* Darker shadow for pressed effect */
 }
 
 .black-speakers-container {
