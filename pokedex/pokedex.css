@@ -370,13 +370,28 @@
     align-items: center;
 }
 
-.black-screen{
+.black-screen {
     background-color: black;
+    color: white;
+    border: 2px solid black;
     height: 120px;
     width: 85%;
     margin-top: 50px;
     border-radius: 5px;
-   
+    padding: 5px;
+    font-size: 20px;  /* Increases text size */
+    line-height: 1.5;  /* Adjusts the line spacing */
+    resize: none;  /* Optional: prevents resizing */
+    overflow-y: auto; /* Allows vertical scrolling */
+    white-space: pre-wrap; /* Ensure text wraps within the box */
+    word-wrap: break-word; /* Ensure long words wrap as well */
+}
+
+.black-screen::-webkit-scrollbar {
+    display: none;
+}
+.black-screen {
+    scrollbar-width: none; 
 }
 
 .blue-button-container {
