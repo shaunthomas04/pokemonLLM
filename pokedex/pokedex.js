@@ -1,3 +1,4 @@
+// https://pokeapi.co/
 // Function to update the screen text
 function update_screen_text(text) {
     var left_blue_screen = document.getElementById("screen");
@@ -39,7 +40,6 @@ function update_screen_image(image_url) {
     setInterval(autoScrollImage, 20); // Adjust the interval to control the speed
 }
 
-
 // Function to clear the screen text
 function clear_text(){
     var left_blue_screen = document.getElementById("screen");
@@ -67,8 +67,15 @@ async function send_pokedex_api_request(){
         const pokemon_image = data.sprites;
         const pokemon_front_sprite = pokemon_image.front_default
 
-
+        //Getting and setting info from the API 
         update_screen_image(pokemon_front_sprite);
+        const moves = data.moves.map(move => move.move.name).join(", ");
+        const abilities = data.abilities.map(ability => ability.ability.name).join(", ");
+        const stats = data.stats.map(stat => `${stat.stat.name}: ${stat.base_stat}`).join(", ");
+        const types = data.types.map(type => type.type.name).join(", ");
+        const attributes = [`Height: ${data.height}m`, `Weight:${data.weight}kg`, `Base XP: ${data.base_experience}`];
+        const games = data.game_indices.map(game => game.version.name).join(", ");
+        const sound = data.cries.latest;
 
     }
     catch (error) {
@@ -80,7 +87,6 @@ async function send_pokedex_api_request(){
     }
 
 }
-
 
 // Functions to toggle pokedex mode
 function toggle_api_mode() {
@@ -98,6 +104,61 @@ function toggle_api_mode() {
     blue_button_1.innerHTML = ""; 
     blue_button_1.appendChild(blue_button_1_span);
 
+    // Blue button 2
+    const blue_button_2_span = document.createElement("span");
+    blue_button_2_span.textContent = "Moves";    
+    blue_button_2.innerHTML = ""; 
+    blue_button_2.appendChild(blue_button_2_span);
+
+    // Blue button 3
+    const blue_button_3_span = document.createElement("span");
+    blue_button_3_span.textContent = "Abilities";    
+    blue_button_3.innerHTML = ""; 
+    blue_button_3.appendChild(blue_button_3_span);
+
+    // Blue button 4
+    const blue_button_4_span = document.createElement("span");
+    blue_button_4_span.textContent = "Stats";    
+    blue_button_4.innerHTML = ""; 
+    blue_button_4.appendChild(blue_button_4_span);
+
+    // Blue button 5
+    const blue_button_5_span = document.createElement("span");
+    blue_button_5_span.textContent = "Types";
+    blue_button_5.innerHTML = "";
+    blue_button_5.appendChild(blue_button_5_span);
+
+    // Blue button 6
+    const blue_button_6_span = document.createElement("span");
+    blue_button_6_span.textContent = "Attributes";
+    blue_button_6.innerHTML = "";
+    blue_button_6.appendChild(blue_button_6_span);
+
+    // Blue button 7
+    const blue_button_7_span = document.createElement("span");
+    blue_button_7_span.textContent = "Games";
+    blue_button_7.innerHTML = "";
+    blue_button_7.appendChild(blue_button_7_span);
+
+    // Blue button 8
+    const blue_button_8_span = document.createElement("span");
+    blue_button_8_span.textContent = "Sound";
+    blue_button_8.innerHTML = "";
+    blue_button_8.appendChild(blue_button_8_span);
+
+    // Blue button 9
+    const blue_button_9_span = document.createElement("span");
+    blue_button_9_span.textContent = "Base XP";
+    blue_button_9.innerHTML = "";
+    blue_button_9.appendChild(blue_button_9_span);
+
+    // Blue button 10
+    const blue_button_10_span = document.createElement("span");
+    blue_button_10_span.textContent = "Info"; //Will need to get the species api for this
+    blue_button_10.innerHTML = "";
+    blue_button_10.appendChild(blue_button_10_span);
+
+    
 }
 
 function toggle_llm_mode() {
