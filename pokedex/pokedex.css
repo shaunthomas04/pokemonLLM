@@ -227,6 +227,10 @@
     padding: 10px;
     font-family: Arial, sans-serif;
     font-size: 16px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #screen::-webkit-scrollbar {
@@ -408,13 +412,31 @@
     background-color: rgb(75, 205, 248);
     border: 2px solid black;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.1); 
-    transition: transform 0.1s, box-shadow 0.1s; 
+    transition: transform 0.1s, box-shadow 0.1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.blue-button span {
+    opacity: 0;              /* fully hidden */
+    visibility: hidden;      /* remove from accessibility/flow */
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.blue-button:hover span {
+    opacity: 1;              /* fully visible */
+    visibility: visible;     /* show on hover */
 }
 
 .blue-button:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.15); 
     transform: translateY(2px); 
 }
+
 
 .misc-container{
     height: 120px;
