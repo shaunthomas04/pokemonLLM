@@ -2,6 +2,7 @@
 // Function to update the screen text
 function update_screen_text(text) {
     var left_blue_screen = document.getElementById("screen");
+    left_blue_screen.innerHTML = '';
     left_blue_screen.textContent = text;
 }
 // Function to update the screen image
@@ -46,6 +47,28 @@ function clear_text(){
     left_blue_screen.innerHTML  = "";
 }
 
+// Function to update a buttons ability to display information
+function give_button_display(button, info, isText, isAudio = false) {
+    const currentButton = document.getElementById(button)
+    
+    if (isText) {
+        currentButton.addEventListener("click", () => update_screen_text(info));
+    }
+    else {
+        currentButton.addEventListener("click", () => update_screen_image(info));
+    }
+
+    if (isAudio){
+        const audioImage = "https://images.vexels.com/media/users/3/145866/isolated/preview/b4efb6c6682b2a808631bf8fbd96d015-sound-wave-icon.png"
+        currentButton.addEventListener("click", () => update_screen_image(audioImage));
+        currentButton.addEventListener("click", () => {
+            const audio = new Audio(info);
+            audio.play();
+        })
+    }
+}
+
+
 // Function to send a request to the LLM API
 async function send_llm_api_request(){
     const user_input = document.getElementById("text-area").value;
@@ -76,6 +99,17 @@ async function send_pokedex_api_request(){
         const attributes = [`Height: ${data.height}m`, `Weight:${data.weight}kg`, `Base XP: ${data.base_experience}`];
         const games = data.game_indices.map(game => game.version.name).join(", ");
         const sound = data.cries.latest;
+
+        give_button_display("blue-button-1", pokemon_front_sprite, false);
+        give_button_display("blue-button-2", moves, true);
+        give_button_display("blue-button-3", abilities, true);
+        give_button_display("blue-button-4", stats, true);
+        give_button_display("blue-button-5", types, true);
+        give_button_display("blue-button-6", attributes.join(", "), true);
+        give_button_display("blue-button-7", games, true);
+        give_button_display("blue-button-8", sound, false, true);
+        give_button_display("blue-button-9", `Base XP: ${data.base_experience}`, true);
+        give_button_display("blue-button-10", `Info in progress`, true);
 
     }
     catch (error) {
@@ -192,6 +226,19 @@ const blue_button_7 = document.getElementById("blue-button-7")
 const blue_button_8 = document.getElementById("blue-button-8")
 const blue_button_9 = document.getElementById("blue-button-9")
 const blue_button_10 = document.getElementById("blue-button-10")
+
+// gray buttons
+const gray_button_1 = document.getElementById("api-toggle-button")
+const gray_button_1_span = document.createElement("span");
+gray_button_1_span.textContent = "Classic";    
+gray_button_1.innerHTML = ""; 
+gray_button_1.appendChild(gray_button_1_span);
+
+const gray_button_2 = document.getElementById("llm-toggle-button")
+const gray_button_2_span = document.createElement("span");
+gray_button_2_span.textContent = "AI";    
+gray_button_2.innerHTML = ""; 
+gray_button_2.appendChild(gray_button_2_span);
 
 // Buttons that change the mode of the pokedex and display indicators
 const api_toggle_button = document.getElementById("api-toggle-button");
