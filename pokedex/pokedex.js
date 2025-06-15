@@ -213,6 +213,10 @@ red_clear_button.addEventListener("click", clear_text);
 
 //Yellow Button use as enter button for right screen
 const yellow_enter_button = document.getElementById("yellow-enter-button")
+const yellow_enter_button_span = document.createElement("span");
+yellow_enter_button_span.textContent = "↑";    
+yellow_enter_button.innerHTML = ""; 
+yellow_enter_button.appendChild(yellow_enter_button_span);
 // yellow_enter_button.addEventListener("click", send_llm_api_request);
 
 // Blue buttons

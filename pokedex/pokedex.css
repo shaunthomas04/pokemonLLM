@@ -53,15 +53,6 @@
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.camera:hover {
-    /* On hover, make it look like it's being pressed or raised further */
-    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3), /* Stronger shadow on hover */
-                -6px -6px 12px rgba(255, 255, 255, 0.5); /* Stronger highlight on hover */
-    transform: scale(1.05); /* Slightly scale up to enhance 3D effect */
-}
-
-
-
 .light-container{
     display: flex;
     margin: 8px;
@@ -489,11 +480,25 @@
     right: 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Adds 3D effect */
     transition: all 0.2s ease; /* Smooth transition for hover effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .yellow-button:hover {
     transform: translateY(2px); /* Moves the button down on hover to simulate pressing */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.12); /* Darker shadow for pressed effect */
+}
+
+.yellow-button span {
+    opacity: 0;              /* fully hidden */
+    visibility: hidden;      /* remove from accessibility/flow */
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.yellow-button:hover span {
+    opacity: 1;              /* fully visible */
+    visibility: visible;     /* show on hover */
 }
 
 .black-speakers-container {
